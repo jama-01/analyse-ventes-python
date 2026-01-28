@@ -1,6 +1,6 @@
 # Analyse des ventes — Python
 
-## 🎯 Objectif
+## Objectif
 Analyser un fichier de ventes au format CSV afin d’extraire
 des indicateurs clés (KPI) utiles à la prise de décision.
 
@@ -9,7 +9,7 @@ du métier de Data Analyst.
 
 ---
 
-## 📊 Données
+## Données
 Le fichier `ventes.csv` contient les informations suivantes :
 
 - ID de commande
@@ -19,14 +19,14 @@ Le fichier `ventes.csv` contient les informations suivantes :
 
 ---
 
-## 🛠️ Technologies utilisées
+## Technologies utilisées
 - Python 3
 - Manipulation de fichiers CSV
 - Structures de données (listes, dictionnaires)
 
 ---
 
-## 📈 Analyses réalisées
+## Analyses réalisées
 - Chiffre d’affaires total
 - Nombre de commandes
 - Panier moyen
@@ -36,7 +36,7 @@ Le fichier `ventes.csv` contient les informations suivantes :
 
 ---
 
-## ▶️ Lancer le projet
+## Lancer le projet
 
 ```bash
 python analysis.py
