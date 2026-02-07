@@ -1,22 +1,23 @@
 import os
+from typing import List, Dict, Tuple
 
-base_dir = os.path.dirname(__file__)
-csv_path = os.path.join(base_dir, "data", "ventes.csv")
-donnees = []
+base_dir: str = os.path.dirname(__file__)
+csv_path: str = os.path.join(base_dir, "data", "ventes.csv")
+donnees: List[List] = []
 
 with open(csv_path, "r", encoding="utf-8") as file:
     next(file)
     for line in file:
-        colonnes = line.strip().split(",")
+        colonnes: List[str] = line.strip().split(",")
         if len(colonnes) == 4:
             colonnes[3] = float(colonnes[3])
             donnees.append(colonnes)
 
-total_ca = sum(line[3] for line in donnees)
-nb_commande = len(donnees)
-panier_moyen = total_ca / nb_commande
+total_ca: float = sum(line[3] for line in donnees)
+nb_commande: int = len(donnees)
+panier_moyen: float = total_ca / nb_commande
 
-ventes_par_pays = {
+ventes_par_pays: Dict[str, Dict[str, float]] = {
     pays: {
         "commandes": sum(1 for line in donnees if line[2] == pays),
         "total": sum(line[3] for line in donnees if line[2] == pays)
@@ -24,13 +25,15 @@ ventes_par_pays = {
     for pays in set(line[2] for line in donnees)
 }
 
-ventes_par_client = {
+ventes_par_client: Dict[str, Dict[str, float]] = {
     client: {
         "total": sum(line[3] for line in donnees if line[1] == client)
     }
     for client in set(line[1] for line in donnees)
 }
-max_client, max_total = max(ventes_par_client.items(), key=lambda item: item[1]["total"])
+
+max_client: str = max(ventes_par_client.items(), key=lambda x: x[1]["total"])[0]
+max_total: float = ventes_par_client[max_client]["total"]
 
 print("\n============================== \nRAPPORT D'ANALYSE DES VENTES \n==============================")
 
